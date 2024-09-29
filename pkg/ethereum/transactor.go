@@ -17,11 +17,7 @@ import (
 )
 
 const (
-	// sendTxTimeout defines how many seconds to wait before returning result in sentTransaction().
-	sendTxTimeout = 300 * time.Second
-
-	defaultGas = 90000
-
+	defaultGas         = 90000
 	ValidSignatureSize = 65
 )
 
