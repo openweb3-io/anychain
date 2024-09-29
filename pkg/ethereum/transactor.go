@@ -176,7 +176,7 @@ func (t *Transactor) ValidateAndBuildTransaction(
 	sendArgs _types.SendTxArgs,
 	lastUsedNonce int64,
 ) (tx *types.Transaction, nonce uint64, err error) {
-	tx, err = t.validateAndBuildTransaction(ctx, chainID, sendArgs, lastUsedNonce)
+	tx, err = t.validateAndBuildTransaction(ctx, sendArgs, lastUsedNonce)
 	if err != nil {
 		return nil, 0, err
 	}
@@ -306,7 +306,6 @@ func (t *Transactor) BuildTransactionWithSignature(
 
 func (t *Transactor) validateAndBuildTransaction(
 	ctx context.Context,
-	chainID *big.Int,
 	args _types.SendTxArgs,
 	lastUsedNonce int64,
 ) (tx *types.Transaction, err error) {
@@ -379,7 +378,7 @@ func (t *Transactor) validateAndPropagate(
 	args _types.SendTxArgs,
 	lastUsedNonce int64,
 ) (hash _types.Hash, nonce uint64, err error) {
-	tx, err := t.validateAndBuildTransaction(ctx, chainID, args, lastUsedNonce)
+	tx, err := t.validateAndBuildTransaction(ctx, args, lastUsedNonce)
 	if err != nil {
 		return hash, nonce, err
 	}
